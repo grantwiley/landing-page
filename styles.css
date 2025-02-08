@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -74,6 +78,43 @@ nav ul {
 
 nav li {
     list-style: none;
+    position: relative;
+}
+
+nav li:hover {
+    transform: scale(1.05);
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #00007A;
+    transition: width 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    color: #00007A;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: #00007A;
 }
 
 nav a {
@@ -264,6 +305,52 @@ nav a {
     margin: 0;
 }
 
+.reviews-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 300px;
+}
+
+.review-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-slide.active {
+    opacity: 1;
+}
+
+.review-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.0rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .footer {
     background: linear-gradient(to bottom, #f1f3f5, #e9ecef);
     margin: 0;
@@ -288,5 +375,29 @@ nav a {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+@media screen and (max-width: 768px) {
+    .reviews {
+        padding: 2rem 1rem;
+    }
+
+    .reviews h4 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+
+    .reviews h2 {
+        font-size: 1rem;
+    }
+
+    .reviews-container {
+        height: auto;
+        min-height: 400px;
+    }
+
+    .review-slide {
+        padding: 0 1rem;
     }
 }
