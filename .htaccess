@@ -1,20 +1,17 @@
 RewriteEngine On
 
-# Set the base directory
+# Ensure proper base
 RewriteBase /
 
-# Remove .html extension
-RewriteCond %{REQUEST_FILENAME} !-d
+# Redirect /quote to quote.html
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^quote/?$ quote.html [NC,L]
 
-# Redirect /index.html to /
-RewriteRule ^index\.html$ / [R=301,L]
-
-# Ensure trailing slash on directories
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+# Redirect /contact to contact.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^contact/?$ contact.html [NC,L]
 
 # Handle 404 errors
 ErrorDocument 404 /404.html
