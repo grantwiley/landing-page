@@ -90,3 +90,17 @@ nav a {
     align-items: center;
     gap: 0.5rem;
 }
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 8rem;
+}
+
+.book-now-button {
+    background-color: #00007A;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
