@@ -1,5 +1,10 @@
 // Handle URL rewriting for clean URLs
 document.addEventListener('DOMContentLoaded', function() {
+    // Clean up current URL if needed
+    if (window.location.pathname.endsWith('.html')) {
+        const cleanUrl = window.location.pathname.replace('.html', '');
+        history.replaceState({ url: cleanUrl }, '', cleanUrl);
+    }
     // Handle navigation links
     document.querySelectorAll('a').forEach(link => {
         if (link.href.includes('.html')) {
