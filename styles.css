@@ -102,6 +102,18 @@ nav a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05)
 }
 
+.right-hero img {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.right-hero img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
 .book-now-button {
     background-color: #00007A;
     color: white;
@@ -161,8 +173,34 @@ nav a {
     padding: 0.75rem;
     height: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
 }
 
+.fleet-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fleet-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+}
 .fleet-item p {
     text-align: center;
     margin: 0.5rem 0;
@@ -175,6 +213,11 @@ nav a {
     height: 150px;
     object-fit: contain;
     margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.fleet-item:hover img {
+    transform: translateY(-8px) scale(1.05);
 }
 
 .fleet-item p {
