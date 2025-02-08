@@ -456,6 +456,50 @@ nav a {
     margin-top: 0.5rem;
 }
 
+.radio-group {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.back-button,
+.cancel-button {
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.back-button:hover,
+.cancel-button:hover {
+    background-color: #444;
+}
+
+.contact-info {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
 .weekday-hours,
 .weekend-hours {
     padding: 0;
@@ -562,20 +606,197 @@ nav a {
 
 .quote-section {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#quote-result {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    display: none;
 }
 
 .rental-form {
-    max-width: 600px;
+    width: 100%;
+    max-width: 500px;
     margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+}
+
+.rental-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.rental-form input,
+.rental-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.rental-form label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.rental-form button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #00007A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.rental-form button[type="submit"]:hover {
+    background-color: #000055;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 1.5rem 0;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.radio-group label:hover {
+    transform: translateY(-2px);
+}
+
+.radio-group input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00007A;
+    border-radius: 50%;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: #00007A;
+    border-color: #00007A;
+}
+
+.radio-group input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.next-button,
+.back-button,
+.cancel-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    min-width: 120px;
+}
+
+.next-button {
+    background-color: #00007A;
+    color: white;
+}
+
+.next-button:hover {
+    background-color: #000055;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 122, 0.2);
+}
+
+.back-button,
+.cancel-button {
+    background-color: #666;
+    color: white;
+}
+
+.back-button:hover,
+.cancel-button:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#quote-result h3 {
+    color: #00007A;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    color: #666;
+    line-height: 1.6;
+    margin-top: 1rem;
 }
 
 .form-group {
     margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group label {
@@ -586,20 +807,19 @@ nav a {
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea {
+.form-group select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.3s ease;
     box-sizing: border-box;
+    margin: 0;
 }
 
 .form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-group select:focus {
     outline: none;
     border-color: #00007A;
     box-shadow: 0 0 0 2px rgba(0, 0, 122, 0.1);
@@ -608,15 +828,15 @@ nav a {
 .continue-button {
     background-color: #00007A;
     color: white;
+    padding: 0.75rem 2rem;
     border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
-    text-transform: uppercase;
+    margin-top: 1rem;
 }
 
 .continue-button:hover {
