@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (cancelButton) {
                 cancelButton.addEventListener('click', () => {
-                    window.location.href = 'quote.html';
+                    window.location.href = 'quote';
                 });
             }
         }
