@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Quote Form Handling
     const quoteForm = document.getElementById('quote-form');
     const quoteResult = document.getElementById('quote-result');
+    
+    // Initialize form data storage
+    let formData = {};
 
     if (quoteForm && quoteResult) {
         const questions = [
@@ -58,6 +61,31 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
+        function sendEmail() {
+            emailjs.send('service_b8f7bys', 'template_p0lem5c', {
+                first_name: formData.firstName,
+                last_name: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                vehicle_type: formData.vehicleType,
+                pickup_date: formData.pickupDate,
+                return_date: formData.returnDate,
+                age_license: formData.answers.age_license,
+                insurance: formData.answers.insurance,
+                out_of_state: formData.answers.out_of_state
+            })
+            .then(() => {
+                showThankYouMessage();
+            })
+            .catch((error) => {
+                console.error('Email sending failed:', error);
+                quoteResult.innerHTML = `
+                    <h3>An error occurred while submitting your quote.</h3>
+                    <p class="contact-info">Please try again or contact us directly at 540-213-0202.</p>
+                `;
+            });
+        }
+
         function showThankYouMessage() {
             quoteResult.innerHTML = `
                 <h3>Thank You For Submitting a Rental Quote. We Will be in Touch With You Asap.</h3>
@@ -78,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     quoteResult.style.opacity = '1';
                 }, 50);
             } else {
-                showThankYouMessage();
+                sendEmail();
             }
         }
 
@@ -104,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const radioButtons = quoteResult.querySelectorAll('input[type="radio"]');
                     const isAnswered = Array.from(radioButtons).some(radio => radio.checked);
                     if (isAnswered) {
+                        // Store the answer before moving to next question
+                        const selectedAnswer = Array.from(radioButtons).find(radio => radio.checked);
+                        formData.answers[questions[currentQuestionIndex].name] = selectedAnswer.value;
                         showNextQuestion();
                     } else {
                         alert('Please select an answer before continuing.');
@@ -124,6 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         quoteForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            // Collect initial form data
+            formData = {
+                firstName: document.getElementById('first-name').value,
+                lastName: document.getElementById('last-name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                vehicleType: document.getElementById('vehicle-type').value,
+                pickupDate: document.getElementById('pickup-date').value,
+                returnDate: document.getElementById('return-date').value,
+                answers: {}
+            };
             currentQuestionIndex = -1;
             showNextQuestion();
         });
