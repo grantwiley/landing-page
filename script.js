@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function sendEmail() {
+            console.log('Sending email with form data:', formData);
             emailjs.send('service_b8f7bys', 'template_p0lem5c', {
                 first_name: formData.firstName,
                 last_name: formData.lastName,
@@ -74,11 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 insurance: formData.answers.insurance,
                 out_of_state: formData.answers.out_of_state
             })
-            .then(() => {
+            .then((response) => {
+                console.log('Email sent successfully:', response);
                 showThankYouMessage();
             })
             .catch((error) => {
-                console.error('Email sending failed:', error);
+                console.error('Email sending failed - Details:', {
+                    error: error,
+                    formData: formData,
+                    serviceId: 'service_b8f7bys',
+                    templateId: 'template_p0lem5c'
+                });
                 quoteResult.innerHTML = `
                     <h3>An error occurred while submitting your quote.</h3>
                     <p class="contact-info">Please try again or contact us directly at 540-213-0202.</p>
